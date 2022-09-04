@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "aws" {
+    region = var.aws_region
+}
+
 resource "aws_instance" "laravel" {
     ami                       = var.ami
     instance_type             = var.instance_type
@@ -26,7 +30,6 @@ resource "aws_eip" "eip" {
 }
 
 resource "aws_key_pair" "deployer" {
-    key_name   = "deployer-key"
     public_key = var.public_key
 }
 
