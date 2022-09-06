@@ -18,3 +18,13 @@ variable "user_data_path" {
   type    = string
   default = "laravel_module/script.sh"
 }
+
+variable "ssh_access_ipv4" {
+  type = list
+  default = ["0.0.0.0/0"]
+}
+
+variable "ssh_access_ipv6" {
+  type = list
+  default = ["::/0"]
+}
