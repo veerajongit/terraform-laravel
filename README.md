@@ -2,23 +2,22 @@
 
 ### Add this to your terraform file
 ```
-provider "aws" {
-    region = "ap-south-1" # Set your aws region
-}
-
-provider "aws" {
-    region = "ap-south-1"
-}
-
 module "laravel" {
-    source = "github.com/veerajongit/terraform-laravel" # You can clone the repo and use the directory name instead
-    public_key = "" # Your public key will go here
+    source = "github.com/veerajongit/
+    terraform-laravel" # You can clone the repo 
+    and use the directory name instead
+
+    aws_region = "aws_region" # AWS Region to setup your EC2 instance
+    ami        = "ami-id" # This is region specific
+    public_key = "" # Your public key to access your id
+    ssh_access_ipv4 = ["0.0.0.0/0"] # List of ipv4 strings to provide ssh access
+    ssh_access_ipv6 = [::/0] # List of ipv6 strings to provide ssh access
 }
 ```
 
-run  
+## run the command and check your server changes to approve
 `terraform init && terraform apply`  
-check your file changes and approve
+
 
 ## Access your server
 `ssh -i {path_to_your_rsa} ubuntu@{your_server_ip}`
